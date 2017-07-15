@@ -11,6 +11,7 @@ m = length(y); % number of training examples
 J = 0;
 grad = zeros(size(theta));
 
+
 % ====================== YOUR CODE HERE ======================
 % Instructions: Compute the cost of a particular choice of theta.
 %               You should set J to the cost.
@@ -20,8 +21,11 @@ grad = zeros(size(theta));
 % Note: grad should have the same dimensions as theta
 %
 
+g = 1./(1+exp(-X*theta));
+J =  (-y'*log(g) -(1-y)'*log(1-g))./m;
 
 
+grad = (1/m)*X'*(g - y);  
 
 
 
