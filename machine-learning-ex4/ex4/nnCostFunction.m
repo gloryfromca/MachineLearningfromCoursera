@@ -83,21 +83,11 @@ a_3 = A2
 D2 = zeros(size(Theta2))
 D1 = zeros(size(Theta1))
 
-for i=1:m
+delta3 = a_3 - y_e
+delta2 = (delta3*Theta2).*(a_2.*(1-a_2))
 
-delta3 = a_3(i,1:end)' - y_e(i,1:end)'
-
-delta2_ = Theta2'*delta3
-
-delta2 = delta2_(2:end).*sigmoidGradient(z_2(i,1:end))'
-
-D2 = D2 + delta3*(a_2(i,1:end))   
-D1 = D1 + delta2*(a_1(i,1:end))
-
-end;
-Theta1_grad = D1/m
-Theta2_grad = D2/m
-
+Theta2_grad = delta3'*a_2./m 
+Theta1_grad = delta2(:,2:end)'*a_1./m 
 
 % Part 3: Implement regularization with the cost function and gradients.
 %
@@ -113,8 +103,8 @@ add2 = [zeros(size(Theta2, 1),1) (lambda/m)*Theta2(:,2:end)]
 Theta1_grad = Theta1_grad + add1
 Theta2_grad = Theta2_grad + add2
 
-
-
+% we need to unroll the Theta into grad vector 
+grad = [Theta1_grad(:) ; Theta2_grad(:)]
 
 
 
