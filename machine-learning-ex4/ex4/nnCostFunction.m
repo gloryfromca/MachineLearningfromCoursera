@@ -103,22 +103,6 @@ add2 = [zeros(size(Theta2, 1),1) (lambda/m)*Theta2(:,2:end)]
 Theta1_grad = Theta1_grad + add1
 Theta2_grad = Theta2_grad + add2
 
-% we need to unroll the Theta into grad vector 
-grad = [Theta1_grad(:) ; Theta2_grad(:)]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 % -------------------------------------------------------------
 
