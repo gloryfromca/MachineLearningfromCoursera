@@ -16,6 +16,18 @@ lambda_vec = [0 0.001 0.003 0.01 0.03 0.1 0.3 1 3 10]';
 error_train = zeros(length(lambda_vec), 1);
 error_val = zeros(length(lambda_vec), 1);
 
+for i=1:length(lambda_vec)
+    theta = trainLinearReg(X, y, lambda_vec(i))
+    %注意下面的调用方式，可以使得s最后输出一个vector
+    [error_train(i),s] = linearRegCostFunction(X, y, theta, 0) 
+    %当函数调用时未给输出参数时，matlab将第一个输出参数的值赋给ans。
+    error_val(i) = linearRegCostFunction(Xval, yval, theta, 0) 
+    
+
+end 
+disp(error_train(i))
+disp(s)
+    
 % ====================== YOUR CODE HERE ======================
 % Instructions: Fill in this function to return training errors in 
 %               error_train and the validation errors in error_val. The 
