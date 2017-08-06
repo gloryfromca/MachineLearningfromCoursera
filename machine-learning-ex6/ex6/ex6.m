@@ -102,6 +102,8 @@ load('ex6data2.mat');
 % SVM Parameters
 C = 1; sigma = 0.1;
 
+        
+
 % We set the tolerance and max_passes lower here so that the code will run
 % faster. However, in practice, you will want to run the training to
 % convergence.
