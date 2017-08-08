@@ -21,6 +21,13 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
+m = size(X,1)
+result_mk = []
+for i=1:K
+    centroids_i_mn = repmat(centroids(i,:),m,1)
+    result_mk = [ result_mk sum((centroids_i_mn - X).^2 ,2) ]
+end
+[result_detail idx] = min(result_mk,[],2)
 
 
 
