@@ -27,6 +27,8 @@ centroids = zeros(K, n);
 %
 
 
+for i=1:K
+    centriods(i) = sum(X.*repmat((idx==i),1,K))
 
 
 
